@@ -1,0 +1,8 @@
+createdAt: DateTime;
+description: string;
+epic: string;
+feature: string;
+sNo: number;
+updatedAt: DateTime;
+userStory: string;
+_id: string;
