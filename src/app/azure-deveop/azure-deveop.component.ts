@@ -23,6 +23,9 @@ export class AzureDeveopComponent implements OnInit {
   selectedDataInGrid: any[] = [];
   organizationsDetails: any[] = [];
   projectsDetails: any[] = [];
+  azureDeveopDataPaging:any[]=[];
+  nextPage:number=0;
+  previousPage:number=0;
   constructor(private services:ServicesService) {
    }
 
@@ -31,10 +34,20 @@ export class AzureDeveopComponent implements OnInit {
     this.getProjectDetails();
   }
 
+   
    getdata()
    {
      this.services.GetData().subscribe((result)=>{
       this.azureDeveopData=result;
+      this.azureDeveopDataPaging=[];
+      let increment=3;
+      let index=this.nextPage;
+      for(let i=index;i<increment;i++){
+        console.log(this.azureDeveopData[i])
+        this.azureDeveopDataPaging[i]=this.azureDeveopData[i];
+      }
+      this.nextPage=this.nextPage+3;
+      console.log(this.azureDeveopDataPaging)
     })
    }
 
@@ -47,7 +60,7 @@ export class AzureDeveopComponent implements OnInit {
    }
 
     //If Main Checked then Load All data to send 
-   onMainCheckBoxChanged(checked)
+    onMainCheckBoxChanged(checked)
    {
     this.selectedDataInGrid= [];
     if(checked==true)
@@ -106,5 +119,21 @@ export class AzureDeveopComponent implements OnInit {
        })
       }) 
       console.log(this.projectsDetails)
+     }
+
+
+
+     //Paging 
+     MyFunctionNextPage()
+     {
+      this.azureDeveopDataPaging=[];
+      let increment=this.nextPage+3;
+      let index=this.nextPage;
+      for(let i=index;i<increment;i++){
+        console.log(this.azureDeveopData[i])
+        this.azureDeveopDataPaging[i]=this.azureDeveopData[i];
+      }
+      this.nextPage=this.nextPage+3;
+      console.log(this.azureDeveopDataPaging)
      }
   }

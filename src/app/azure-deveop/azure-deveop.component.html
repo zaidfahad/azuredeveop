@@ -1,6 +1,6 @@
-<div class="jumbotron jumbotron-fluid">
+<div class="jumbotron jumbotron-fluid" style="background-color: darkcyan;">
     <div class="container">
-      <h3 class="display-4">Collaboration</h3>
+      <h3 class="display-4" style="background-color: darkcyan;color: white;">Collaboration</h3>
     </div>
   </div>
   
@@ -11,8 +11,8 @@
 
     <div>
         <h3>Onboarding Sprint Zero Activities</h3>
-<div >
-       Azure Urls : <select name="AzureUrls" id="AzureUrls" class="form-control" #selectparent (change)="onParentSelectChange(selectparent.value)" >
+    <div>
+       Azure Urls : <select name="AzureUrls" id="AzureUrls" class="form-control" #selectparent (change)="onParentSelectChange(selectparent.value)">
         <option   value="Select"  >
             Select Urls </option>
             <option *ngFor="let parentObj of azureprojectDetails"  [value]="parentObj.name"  >
@@ -69,8 +69,15 @@
               </tr>
            </tbody>
         </table>
+        <button  type="button" class="btn-info" value="Previous"  style="margin: 10px;" >Previous</button>
+        <button  type="button" class="btn-info" value="Next"   (onclick)="MyFunctionNextPage()"  style="margin: 10px;">Next</button>
      </div>
-  
+     
+
+
+
+
+    
     
    
    
